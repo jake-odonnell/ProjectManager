@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import DeleteButton from './DeleteButton'
 
 const AllProducts = ({products, setProducts}) => {
 

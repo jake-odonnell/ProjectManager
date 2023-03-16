@@ -4,24 +4,19 @@ import axios from 'axios'
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import Home from './components/Home';
 import Product from './components/Product';
+import UpdateProduct from './components/UpdateProduct';
 
 function App() {
-
-  const [products, setProducts] = useState([])
-
-  useEffect(() => {
-    axios.get('http://localhost:8000/api/products/all')
-      .then(res => setProducts(res.data))
-      .catch(err => console.log(err))
-  }, [])
 
   return (
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path='/home' element={ <Home products={products} setProducts={setProducts}/>}/>
+          <Route path='/home' element={ <Home/>}/>
           <Route path='/:id' element = { <Product/>}/>
+          <Route path='/update/:id' element = { < UpdateProduct /> } />
         </Routes>
+        
       </div>
     </BrowserRouter>
   );

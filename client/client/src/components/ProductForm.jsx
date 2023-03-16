@@ -18,16 +18,14 @@ const ProductForm = () => {
         e.preventDefault()
         console.log(state)
 
-        axios.post('http://localhost:8000/api/products/new', state)
-            .then(res => {
-                console.log('Done')
-            })
+        axios.get('http://localhost:8000/api/products/new', state)
+            .then(res => console.log(res))
             .catch(err => console.log(err))
     }
 
 
   return (
-    <div className="mt-3">
+    <div className="my-3">
         <form onSubmit={handleForm} className="col-6 m-auto border shadow">
             <h1 className="text-success">Add a Product</h1>
             <div>

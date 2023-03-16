@@ -2,10 +2,8 @@ const Product = require("../models/products.model")
 
 //Create a new Product
 module.exports.create = (req, res) => {
-    console.log("Hello")
     Product.create(req.body)
         .then((newProduct) => res.json(newProduct))
-        .then(console.log('Made it here'))
         .catch((err) => res.json({ message: "Something went wrong", error: err}))
 }
 
@@ -15,3 +13,10 @@ module.exports.findAll = (req, res) => {
         .then((allProducts) => res.json(allProducts))
         .catch((err) => res.json({message: "Something went wrong", error: err }))
     }
+
+module.exports.findOne = (req, res) => {
+    console.log(req.params.id)
+    Product.findById(req.params.id)
+        .then((oneProduct) => res.json(oneProduct))
+        .catch((err) => console.log({message: "Something went wrong", error: err}))
+}
